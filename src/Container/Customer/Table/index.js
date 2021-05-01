@@ -79,13 +79,15 @@ class Table extends React.Component {
                                 Header: () => <div className="Header" >Title</div>,
                                 accessor: 'title',
                                 className: 'text-center',
-                                foldable: true
+                                foldable: true,
+                                width: 100
                             },
                             {
                                 Header: () => <div className="Header" >Body</div>,
                                 accessor: 'body',
                                 foldable: true,
                                 className: 'text-center',
+                                width: 100
                             },
                             {
                                 Header: () => <div className="Header" >Action</div>,
