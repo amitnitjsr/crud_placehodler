@@ -8,6 +8,7 @@ import Container from "@material-ui/core/Container";
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { Row, Col, Button } from 'reactstrap';
 import signin from '../../../asset/images/signin-image.webp';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Navbar from '../../../Component/Navbar/Navbar';
 import Axios from 'axios';
 import './AddEdit.css';
@@ -112,19 +113,30 @@ const AddEdit = (props) => {
                         <Row>
                             <Col>
                                 {props.match.params.id ? <h1>Edit Customer</h1> : <h1>Add Customer</h1>}
-                                <TextField
-                                    name="title"
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <TextareaAutosize
                                     placeholder="Title"
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
-
-                                /><br /><br />
-                                <TextField
-                                    name="body"
+                                    style={{ width: '100%', height: '110px', overflow: 'auto' }}
+                                />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <TextareaAutosize
                                     placeholder="Body"
                                     value={body}
                                     onChange={(e) => setBody(e.target.value)}
-                                /><br /><br />
+                                    style={{ width: '100%', height: '110px', overflow: 'auto' }}
+                                />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col className="add-style">
                                 <Button style={{ backgroundColor: '#6384f9', width: '18%' }}
                                     onClick={() => saveHandler()}
                                 >Add</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -132,7 +144,6 @@ const AddEdit = (props) => {
                             <Button style={{ backgroundColor: '#6384f9' }}
                                     onClick={() => props.history.push('/customer')}
                                 >Cancel</Button>
-                                <br /><br />
                             </Col>
                         </Row>
                     </form>

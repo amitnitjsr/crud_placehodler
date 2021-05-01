@@ -2,7 +2,10 @@
     background: #389ced !important;
     border-color: #ffffff !important;
 } */
-
+.add-style{
+    display: flex;
+    justify-content: flex-end;
+}
 .btn-secondary:hover{
     /* background: #389ced !important; */
     border-color: #ffffff !important;

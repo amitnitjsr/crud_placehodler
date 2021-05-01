@@ -82,6 +82,7 @@ class Table extends React.Component {
                                 accessor: 'title',
                                 className: 'text-center',
                                 foldable: true,
+                                style: { 'whiteSpace': 'unset' }
                                 // width: 100
                             },
                             {
@@ -89,6 +90,7 @@ class Table extends React.Component {
                                 accessor: 'body',
                                 foldable: true,
                                 className: 'text-center',
+                                style: { 'whiteSpace': 'unset' }
                                 // width: 100
                             },
                             {
