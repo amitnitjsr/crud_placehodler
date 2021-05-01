@@ -38,9 +38,11 @@ class Table extends React.Component {
     textHandler = (e) => {
         this.setState({ searchValues: e.target.value })
     }
+
     searchHandler = (e) => {
 
     }
+
     render() {
         const { list } = this.state;
         return (
@@ -80,14 +82,14 @@ class Table extends React.Component {
                                 accessor: 'title',
                                 className: 'text-center',
                                 foldable: true,
-                                width: 100
+                                // width: 100
                             },
                             {
                                 Header: () => <div className="Header" >Body</div>,
                                 accessor: 'body',
                                 foldable: true,
                                 className: 'text-center',
-                                width: 100
+                                // width: 100
                             },
                             {
                                 Header: () => <div className="Header" >Action</div>,
