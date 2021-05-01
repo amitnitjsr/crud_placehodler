@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import * as action from '../Action';
 import Navbar from '../../../Component/Navbar/Navbar';
+import SearchComponent from './searchComponent';
 import Axios from 'axios';
 import './Table.css';
 
@@ -35,11 +36,22 @@ class Table extends React.Component {
             })
     }
 
+    deleteCustomer = (id) => {
+        Axios.delete('https://jsonplaceholder.typicode.com/posts/' + id)
+            .then((res) => {
+                console.log('...', res)
+            })
+            .catch((err) => {
+                console.log('error', err);
+            })
+    }
+
     textHandler = (e) => {
+        console.log('textHandler', this.state.searchValues)
         this.setState({ searchValues: e.target.value })
     }
 
-    searchHandler = (e) => {
+    searchHandler = (values) => {
 
     }
 
@@ -49,22 +61,30 @@ class Table extends React.Component {
             <div>
                 <Navbar />
                 <div style={{ padding: '5%' }}>
-                    <Button style={{
-                        left: ' 2%',
-                        position: 'relative'
-                    }}
-                        onClick={() =>
-                            this.props.history.push(
-                                '/customer/new'
-                            )}
-                    >
-                        <i className="zmdi zmdi-account-add zmdi-hc-lg"></i>&nbsp;
+                    <div>
+                        <Button style={{
+                            left: ' 2%',
+                            position: 'relative'
+                        }}
+                            onClick={() =>
+                                this.props.history.push(
+                                    '/customer/new'
+                                )}
+                        >
+                            <i className="zmdi zmdi-account-add zmdi-hc-lg"></i>&nbsp;
                     Add Customer
                 </Button>
-                    <input type="text" value={this.state.searchValues}
-                        onChange={(e) => this.textHandler(e)}
-                        onKeyDown={(e) => this.searchHandler(e)}
-                    />
+                    </div>
+                    <div>
+                        <div className="search">
+                            <div className="search-input">
+                                <SearchComponent
+                                    searchHandler={this.searchHandler}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
                     <ReactTable
                         data={list ? list : []}
                         columns={[
@@ -112,7 +132,7 @@ class Table extends React.Component {
                                                 <i className="zmdi zmdi-edit zmdi-hc-fnewstatusw table-icon" />
                                             </IconButton>
                                             <IconButton
-                                                onClick={() => this.props.deleteCustomer({ 'id': row.row._original.userId })}
+                                                onClick={() => this.deleteCustomer(row.row._original.userId)}
                                             >
                                                 <i className="zmdi zmdi-delete zmdi-hc-fw table-icon" />
                                             </IconButton>
